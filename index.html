@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        #hero {
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1715610258704-e8f9f5710fe0?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzI5MjE4OTR8&ixlib=rb-4.0.3&q=85');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+        .event-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        #about {
+            padding: 5rem 2rem;
+            background-color: #fff9f7;
+        }
+        #about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #about-text {
+            flex: 1;
+            margin-right: 4rem;
+        }
+        #about-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        #about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            filter: saturate(120%) hue-rotate(10deg);
+        }
+        #contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        #events {
+            background-color: #fff9f7;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="hero" class="relative flex flex-col items-center justify-center text-center p-10">
+        <div class="hero-content max-w-2xl text-center">
+            <h1 class="text-5xl font-bold mb-4 text-white">
+                <span>Events Sheker: Sharing Knowledge,</span>
+                <br>
+                <span>Inspiring Growth</span>
+            </h1>
+            <p class="text-xl mb-8 text-gray-200">Join inspiring events and connect with leading professionals to shape your future.</p>
+            
+            <a href="#events" class="inline-block bg-white text-[#716364] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                Explore Events
+            </a>
+        </div>
+    </div>
+
+    <div id="events" class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Upcoming Events</h2>
+            <div id="events-container" class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Events will be dynamically populated here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="bg-gray-50">
+        <div id="about-content">
+            <div id="about-text">
+                <h2 class="text-4xl font-bold mb-4 text-gray-800">About Us</h2>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Event Sheker is a platform dedicated to empowering women through meaningful cultural exchanges and skill-sharing opportunities. Our mission is to connect successful businesswomen traveling for work with local women's communities in the countries they visit. We organize unique experiences where travelers immerse themselves in local traditions while giving back by sharing their career expertise through workshops and mentorship. Together, we aim to foster connections that inspire mutual growth, promote cultural appreciation, and empower women globally.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScjw5oG56Rlm1KNwSVGtTJmEfGSourROKwNWzgB7XMgpYIHpA/viewform?usp=sf_link" class="bg-[#716364] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#5a4b4f] transition">
+                        Join as an Expert
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeruSguz-qVR8L5sUdG9vI87ibjir4VQiEU0ig1ixNkneZVeQ/viewform?usp=sf_link" class="bg-white border-2 border-[#716364] text-[#716364] px-8 py-3 rounded-full font-semibold hover:bg-pink-50 transition">
+                        Register for Event
+                    </a>
+                </div>
+            </div>
+            <div id="about-image">
+                <img src="https://images.unsplash.com/photo-1715610237622-748477adf2e4?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzI5MjIxNTJ8&ixlib=rb-4.0.3&q=85" alt="Event Sheker Image" class="w-full h-auto object-cover">
+            </div>
+        </div>
+    </div>
+
+    <div id="contact">
+        <a href="mailto:eventsheker@gmail.com" class="text-sm text-gray-700 hover:text-gray-900 transition">Contact Us: eventsheker@gmail.com</a>
+    </div>
+
+    <script>
+        // Sample events data
+        const events = [
+            {
+                title: "Coming Soon", 
+                date: "",
+                description: "Coming Soon",
+                image: "https://images.unsplash.com/photo-1702562546664-324ae7785286?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzI5MjIwNTN8&ixlib=rb-4.0.3&q=85"
+            },
+            {
+                title: "Coming Soon",
+                date: "",
+                description: "Coming Soon",
+                image: "https://images.unsplash.com/photo-1715015325148-ede8b4eb45bb?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzI5MjI1MTJ8&ixlib=rb-4.0.3&q=85"
+            },
+            {
+                title: "Coming Soon",
+                date: "",
+                description: "Coming Soon",
+                image: "https://images.unsplash.com/photo-1706369692869-0931968f6cc1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzI5MjIxMTN8&ixlib=rb-4.0.3&q=85"
+            }
+        ];
+
+        // Function to render events
+        function renderEvents() {
+            const container = document.getElementById('events-container');
+            events.forEach(event => {
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card bg-[#c9b5b6] rounded-xl overflow-hidden shadow-md';
+                eventCard.innerHTML = `
+                    <img src="${event.image}" alt="${event.title}" class="w-full h-48 object-cover" style="filter: saturate(120%) hue-rotate(10deg);">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">${event.title}</h3>
+                        <p class="text-[#716364] mb-2 font-semibold">${event.date}</p>
+                        <p class="text-gray-600">${event.description}</p>
+                    </div>
+                `;
+                container.appendChild(eventCard);
+            });
+        }
+
+        // Render events when page loads
+        document.addEventListener('DOMContentLoaded', renderEvents);
+
+        // Scroll to events section on button click
+        const exploreButton = document.querySelector('a[href="#events"]');
+        exploreButton.addEventListener('click', () => {
+            const eventsSection = document.getElementById('events');
+            eventsSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
